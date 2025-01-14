@@ -1,2 +1,2 @@
-# dlp_in_envoy
+# master's diploma
 dlp in service mesh
