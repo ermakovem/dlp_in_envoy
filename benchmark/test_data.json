@@ -1,0 +1,228 @@
+[
+    {
+      "_id": "6787a62b1d0808731d103a9e",
+      "index": 0,
+      "guid": "72cc6455-49cd-4a9d-b657-a9690c882a86",
+      "isActive": false,
+      "balance": "$1,287.29",
+      "picture": "http://placehold.it/32x32",
+      "age": 20,
+      "eyeColor": "blue",
+      "name": "Beatrice Solomon",
+      "gender": "female",
+      "company": "BUNGA",
+      "email": "beatricesolomon@bunga.com",
+      "phone": "+1 (914) 537-3242",
+      "address": "498 Sedgwick Place, Cliffside, Marshall Islands, 9185",
+      "about": "Sint sint occaecat est non culpa sint esse nulla ea eiusmod magna ut reprehenderit. Ut est consequat excepteur culpa in proident exercitation culpa eiusmod anim incididunt consequat sit. Dolor labore occaecat nisi consectetur ullamco.\r\n",
+      "registered": "2019-02-13T04:51:18 -03:00",
+      "latitude": -74.819588,
+      "longitude": -156.832734,
+      "tags": [
+        "aliqua",
+        "fugiat",
+        "est",
+        "sint",
+        "deserunt",
+        "voluptate",
+        "duis"
+      ],
+      "friends": [
+        {
+          "id": 0,
+          "name": "Julie Livingston"
+        },
+        {
+          "id": 1,
+          "name": "Gallegos Dunn"
+        },
+        {
+          "id": 2,
+          "name": "Waters Forbes"
+        }
+      ],
+      "greeting": "Hello, Beatrice Solomon! You have 5 unread messages.",
+      "favoriteFruit": "banana"
+    },
+    {
+      "_id": "6787a62b8105c2994f836e2e",
+      "index": 1,
+      "guid": "9e2594c3-48d7-4f46-bdce-a69a3159dcb5",
+      "isActive": true,
+      "balance": "$3,034.47",
+      "picture": "http://placehold.it/32x32",
+      "age": 35,
+      "eyeColor": "blue",
+      "name": "Clarke Best",
+      "gender": "male",
+      "company": "KIGGLE",
+      "email": "clarkebest@kiggle.com",
+      "phone": "+1 (814) 464-3405",
+      "address": "766 John Street, Norfolk, Iowa, 3864",
+      "about": "Magna nulla consequat ad culpa voluptate fugiat adipisicing. Fugiat voluptate et dolore veniam. Ut et exercitation eiusmod sit adipisicing ad do sint Lorem aute consequat magna minim nisi. Sit non sunt ea amet quis incididunt. Aliquip deserunt culpa ad nisi duis esse ut mollit consectetur qui exercitation elit sunt fugiat. Mollit ipsum incididunt ullamco excepteur consequat pariatur et tempor sit qui.\r\n",
+      "registered": "2015-03-08T03:44:42 -03:00",
+      "latitude": 48.602916,
+      "longitude": -120.297592,
+      "tags": [
+        "consectetur",
+        "commodo",
+        "esse",
+        "ut",
+        "laborum",
+        "eiusmod",
+        "dolor"
+      ],
+      "friends": [
+        {
+          "id": 0,
+          "name": "Tyson Frost"
+        },
+        {
+          "id": 1,
+          "name": "Kay Walsh"
+        },
+        {
+          "id": 2,
+          "name": "Carissa Blanchard"
+        }
+      ],
+      "greeting": "Hello, Clarke Best! You have 1 unread messages.",
+      "favoriteFruit": "banana"
+    },
+    {
+      "_id": "6787a62b9015579170689cc9",
+      "index": 2,
+      "guid": "35611f7b-6ab1-46e7-80ec-ba0baa21ada8",
+      "isActive": true,
+      "balance": "$2,866.58",
+      "picture": "http://placehold.it/32x32",
+      "age": 35,
+      "eyeColor": "blue",
+      "name": "Simon Bryan",
+      "gender": "male",
+      "company": "UNQ",
+      "email": "simonbryan@unq.com",
+      "phone": "+1 (953) 451-3623",
+      "address": "550 Ovington Court, Clarksburg, Montana, 430",
+      "about": "Voluptate reprehenderit dolore irure in fugiat est in aute nisi nulla excepteur in. Ea est eiusmod id nostrud sit. Eu laboris do fugiat anim. Nisi quis magna in tempor ad sint amet pariatur tempor anim consectetur cillum nulla non. Consectetur officia incididunt proident commodo Lorem incididunt do laboris ut ad officia. Commodo tempor fugiat ipsum sit dolore consequat duis proident amet veniam deserunt. Duis sunt voluptate eiusmod sint amet magna ea quis aliqua esse ullamco dolore.\r\n",
+      "registered": "2017-04-18T02:22:45 -03:00",
+      "latitude": 89.053416,
+      "longitude": -88.756531,
+      "tags": [
+        "consequat",
+        "deserunt",
+        "culpa",
+        "do",
+        "eiusmod",
+        "amet",
+        "enim"
+      ],
+      "friends": [
+        {
+          "id": 0,
+          "name": "Mae Gill"
+        },
+        {
+          "id": 1,
+          "name": "Sears Sharp"
+        },
+        {
+          "id": 2,
+          "name": "Benson Pratt"
+        }
+      ],
+      "greeting": "Hello, Simon Bryan! You have 10 unread messages.",
+      "favoriteFruit": "banana"
+    },
+    {
+      "_id": "6787a62b3ae6ea86f3110f0d",
+      "index": 3,
+      "guid": "05df6574-d92c-45c1-83e8-fe66e1e246a0",
+      "isActive": false,
+      "balance": "$2,067.21",
+      "picture": "http://placehold.it/32x32",
+      "age": 20,
+      "eyeColor": "green",
+      "name": "Briana Graves",
+      "gender": "female",
+      "company": "ACRUEX",
+      "email": "brianagraves@acruex.com",
+      "phone": "+1 (860) 522-2542",
+      "address": "194 Chester Street, Winfred, Puerto Rico, 1966",
+      "about": "Eiusmod dolore est adipisicing amet. Est deserunt est mollit excepteur enim ut in eiusmod et non cupidatat. Ut veniam eiusmod mollit id eu tempor anim et incididunt culpa culpa esse labore. Cupidatat pariatur tempor cillum nulla officia Lorem cupidatat elit. Occaecat sint sunt dolor consequat in laboris nulla dolore anim sint. Enim anim officia commodo elit minim fugiat.\r\n",
+      "registered": "2015-05-07T06:44:47 -03:00",
+      "latitude": 10.717697,
+      "longitude": -149.212468,
+      "tags": [
+        "sint",
+        "anim",
+        "do",
+        "eiusmod",
+        "cillum",
+        "eu",
+        "quis",
+        "1234 123456"
+      ],
+      "friends": [
+        {
+          "id": 0,
+          "name": "Merle Herrera"
+        },
+        {
+          "id": 1,
+          "name": "Roxie Hensley"
+        },
+        {
+          "id": 2,
+          "name": "Griffin Dorsey"
+        }
+      ],
+      "greeting": "Hello, Briana Graves! You have 10 unread messages.",
+      "favoriteFruit": "strawberry"
+    },
+    {
+      "_id": "6787a62b874d8260c86bf83c",
+      "index": 4,
+      "guid": "d2d6eb46-ac4a-451c-8125-56fa566fb03c",
+      "isActive": true,
+      "balance": "$2,324.02",
+      "picture": "http://placehold.it/32x32",
+      "age": 33,
+      "eyeColor": "green",
+      "name": "Cole Bolton",
+      "gender": "male",
+      "company": "MANUFACT",
+      "email": "colebolton@manufact.com",
+      "phone": "+1 (996) 597-3090",
+      "address": "318 Voorhies Avenue, Albany, Georgia, 7593",
+      "about": "Esse voluptate dolore cupidatat excepteur quis ex. Amet velit anim sint ut ad aliqua adipisicing incididunt do mollit reprehenderit laborum id proident. Ad nulla occaecat pariatur duis.\r\n",
+      "registered": "2024-01-21T02:05:53 -03:00",
+      "latitude": 46.584314,
+      "longitude": -143.088093,
+      "tags": [
+        "exercitation",
+        "ipsum",
+        "excepteur",
+        "cupidatat",
+        "eiusmod",
+        "id",
+        "veniam"
+      ],
+      "friends": [
+        {
+          "id": 0,
+          "name": "Key Gentry"
+        },
+        {
+          "id": 1,
+          "name": "Nettie Barker"
+        },
+        {
+          "id": 2,
+          "name": "Wilder Phillips"
+        }
+      ],
+      "greeting": "Hello, Cole Bolton! You have 9 unread messages.",
+      "favoriteFruit": "apple"
+    }
+  ]
