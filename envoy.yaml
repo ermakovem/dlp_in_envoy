@@ -20,11 +20,17 @@ static_resources:
                         - match: { prefix: "/" }
                           route: { cluster: backend_service }
                 http_filters:
-                  - name: envoy.filters.http.lua
+                  - name: envoy.filters.http.wasm
                     typed_config:
-                      "@type": type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua
-                      inline_code: |
-                                dofile("/etc/envoy/lua/dlp_filter.lua")
+                      "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+                      type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
+                      value:
+                        config:
+                          vm_config:
+                            runtime: "envoy.wasm.runtime.v8"
+                            code:
+                              local:
+                                filename: "/etc/envoy/wasm/header_filter.wasm"
                   - name: envoy.filters.http.router
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router

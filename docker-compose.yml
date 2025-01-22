@@ -17,7 +17,7 @@ services:
     container_name: envoy_proxy
     volumes:
       - ./envoy.yaml:/etc/envoy/envoy.yaml
-      - ./dlp_filter.lua:/etc/envoy/lua/dlp_filter.lua
+      - ./myproject/myproject.wasm:/etc/envoy/wasm/header_filter.wasm
     ports:
       - "8080:8080"
     depends_on:
