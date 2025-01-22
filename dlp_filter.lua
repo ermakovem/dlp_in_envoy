@@ -37,34 +37,57 @@ local function contains_russian_passport(data)
   end
 end
 
+
+local function DLP(content_type, data)
+  return (contains_credit_card(data) or contains_russian_passport(data))
+end
+
 function envoy_on_request(request_handle)
   local body = request_handle:body()
-  
+  local headers = request_handle:headers()
+  local mode = "Block"
+
   if (body ~= nil) then
-    text = body:getBytes(0,body:length())
+    local text = body:getBytes(0,body:length())
+    local content_type = headers:get("content-type")
 
-    if (contains_russian_passport(text)) then
-      request_handle:logWarn("DLP found passport on request")
-    end
-
-    if (contains_credit_card(text)) then
-      request_handle:logWarn("DLP found credit card on request")
+    if (DLP(content_type, text)) then
+      if (mode == "Audit") then
+        request_handle:logWarn("Warn by DLP")
+      end
+      if (mode == "Block") then
+        request_handle:respond(
+          {
+            [":status"] = "403",
+            ["content-type"] = "text/plain",
+            ["x-reason"] = "Blocked by DLP"
+          },
+          "Blocked by DLP"
+        )
+        request_handle:logErr("Blocked by DLP")
+      end
     end
   end
 end
 
 function envoy_on_response(response_handle)
   local body = response_handle:body()
+  local headers = response_handle:headers()
+  local mode = "Pass"
 
   if (body ~= nil) then
-    text = body:getBytes(0,body:length())
+    local text = body:getBytes(0,body:length())
+    local content_type = headers:get("content-type")
 
-    if (contains_russian_passport(text)) then
-      response_handle:logWarn("DLP found passport on response")
-    end
-
-    if (contains_credit_card(text)) then
-      response_handle:logWarn("DLP found credit card on response")
+    if (DLP(content_type, text)) then
+      if (mode == "Audit") then
+        response_handle:logWarn("Warn by DLP")
+      end
+      if (mode == "Block") then
+        headers:replace(":status", "403")
+        headers:replace("x-reason", "Blocked by DLP")
+        response_handle:logErr("Blocked by DLP")
+      end
     end
   end
 end
