@@ -26,7 +26,9 @@ if __name__ == "__main__":
         sizes.append(size)
         post_times.append(post_time)
 
-    
+    sizes.sort()
+    post_times.sort()
+    print(sizes, post_times)
     plt.plot(sizes, post_times, marker='o')
     plt.xlabel('JSON Size (bytes)')
     plt.ylabel('POST Request Time (ms)')
