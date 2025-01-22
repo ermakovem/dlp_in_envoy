@@ -1,5 +1,8 @@
 #include "proxy_wasm_intrinsics.h"
 #include <regex>
+#include <iostream>
+
+#include <string>
 
 class DlpFilter : public Context {
  public:
@@ -19,19 +22,22 @@ class DlpFilter : public Context {
  
   FilterDataStatus onRequestBody(size_t body_buffer_length,
                                          bool end_of_stream) override {
+    std::string mode = "Pass";
     WasmDataPtr chunk = getBufferBytes(WasmBufferType::HttpRequestBody, 0, body_buffer_length);
     request_chunks.push_back(std::move(chunk));
 
+
     if (end_of_stream) {
-      std::string full_body;
-      for (auto& chunk : request_chunks) {
-        full_body += std::string(chunk->view());
+      if (DLP(content_type, request_chunks)) {
+        if (mode == "Audit") {
+          LOG_WARN("Warn by DLP");
+        }
+        if (mode == "Block") {
+          sendLocalResponse(403, "Blocked by DLP", "Blocked by DLP", {});
+          LOG_ERROR("Blocked by DLP");
+        }
       }
-      if (containsRussianPassport(full_body)) {
-        LOG_INFO("DLP found passport on request");
-      }
-    }
-                                   
+    }                            
     return FilterDataStatus::Continue;
   }
 
@@ -49,30 +55,74 @@ class DlpFilter : public Context {
 
   FilterDataStatus onResponseBody(size_t body_buffer_length,
                                           bool end_of_stream) override {
+
+    std::string mode = "Block";
     WasmDataPtr chunk = getBufferBytes(WasmBufferType::HttpResponseBody, 0, body_buffer_length);
     response_chunks.push_back(std::move(chunk));
 
     if (end_of_stream) {
-      std::string full_body;
-      for (auto& chunk : response_chunks) {
-        full_body += std::string(chunk->view());
+      replaceResponseHeader(":status", "403");
+      if (DLP(content_type, response_chunks)) {
+        if (mode == "Audit") {
+          LOG_WARN("Warn by DLP");
+        }
+        if (mode == "Block") {
+          replaceResponseHeader(":status", "403");
+          setBuffer(WasmBufferType::HttpResponseBody, 0, body_buffer_length, "Blocked by DLP");
+          LOG_ERROR("Blocked by DLP");
+        }
       }
-      if (containsRussianPassport(full_body)) {
-        LOG_INFO("DLP found passport on response");
-      }
-    }
-                                        
+    }                                   
     return FilterDataStatus::Continue;
   }
  private:
  std::vector<WasmDataPtr> request_chunks;
  std::vector<WasmDataPtr> response_chunks;
  std::string content_type;
+ 
+ bool DLP(const std::string& content_type, const std::vector<WasmDataPtr>& chunks) {
+  std::string full_body;
+  for (auto& chunk : chunks) {
+    full_body += std::string(chunk->view());
+  }
+  return containsRussianPassport(full_body) || contains_credit_card(full_body);
+ }
 
  bool containsRussianPassport(const std::string& data) const {
   std::regex pattern(R"(\d{4}\s\d{6})");
   return std::regex_search(data, pattern);
  }
+
+
+bool luhn_check(const std::string& num) {
+    int sum = 0;
+    bool alt = false;
+    for (int i = num.length() - 1; i >= 0; --i) {
+        int n = num[i] - '0';
+        if (alt) {
+            n *= 2;
+            if (n > 9) n -= 9;
+        }
+        sum += n;
+        alt = !alt;
+    }
+    return (sum % 10 == 0);
+}
+
+bool contains_credit_card(const std::string& data) {
+    std::regex card_pattern("\\d{4}[-\\s]?\\d{4}[-\\s]?\\d{4}[-\\s]?\\d{4}");
+    std::smatch match;
+    if (std::regex_search(data, match, card_pattern)) {
+        std::string card_number;
+        for (char c : match.str()) {
+            if (std::isdigit(c)) {
+                card_number += c;
+            }
+        }
+        return luhn_check(card_number);
+    }
+    return false;
+}
 
 };
 

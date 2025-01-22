@@ -10,6 +10,7 @@ def measure_request_time(test_json):
   start = time.time()
   request = requests.post(url, json=test_json)
   end = time.time()
+  request = requests.get(url, json=test_json)
   print("POST:", end - start, "SIZE:", json_size)
   return json_size, (end - start) * 1000
 
